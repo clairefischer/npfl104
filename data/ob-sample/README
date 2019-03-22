@@ -1,1 +1,5 @@
+The dataset winedata catalogue information about 6497 distinct wines including 11 chemical characteristics (pH, alcohol, density, chloride,…), the quality and the type of the wine (Red ou White). 
 
+This dataset comes from our home University website and is only accessible with a login and a password
+
+It was originally a .json file. So we convert it into .csv with Python and did all the processing with R. The dataset was split randomly into a training and a test datasets. The proportion of data is 2/3 for the training and 1/3 for the test since the dataset is big.
