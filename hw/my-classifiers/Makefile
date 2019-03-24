@@ -1,17 +1,17 @@
 
 
-download:
-	python download.py
-	python knn.py
-	python perceptron.py
-	python nb.py
-default : download
-all : download
+default : download nb perceptron knn
+
+all : download nb perceptron knn 
+
 download : download
-nb : NB
+	python download.py
+NB : NB
+	python NB.py
 perceptron : perceptron
-knn : 
-	knn
+	python perceptron.py
+knn : knn
+	python knn.py
 clean : 
 	rm *.pyo download 
 string_times : download.pyo

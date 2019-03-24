@@ -8,7 +8,7 @@ def importcsv(file):
 	data = list(lines)
 	return data
 
-def class_sep(data):
+def class_sep(data): #Return a dictionnary of the class as a key with the corresponding item
 	sep={}
 	for i in range(len(data)):
 		item=data[i]
@@ -26,7 +26,7 @@ def dev(x):
         somme=somme+(i-mean(x))**2
     return math.sqrt(somme/float(len(x)-1))
 
-def info(data):
+def info(data): #Return the class with the mean and dev of the items in a dictionnary
     j=0
     list_att=[]
     while j<len(data[0])-1:
@@ -45,7 +45,7 @@ def info(data):
     return infos
 
 
-def prediction(infos, predi):
+def prediction(infos, predi): #Return best class predicted (in term of probability) 
     predict=[]
     for i in range(len(predi)):
         proba={}
@@ -63,7 +63,7 @@ def prediction(infos, predi):
         predict.append(bestclass)
     return predict
 
-def accuracy(test,predict):
+def accuracy(test,predict):#Test how well the file is predicting 
     right=0
     for i in range(len(test)):
         if test[i][-1]==predict[i]:
@@ -71,7 +71,7 @@ def accuracy(test,predict):
     acc=right/float(len(test))*100
     return acc
 
-def nb(filetrain,filetest):
+def nb(filetrain,filetest):  #Classifier
     traindata=importcsv(filetrain)
     predictdata=importcsv(filetest)
     predi= prediction(info(traindata),predictdata)

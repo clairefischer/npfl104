@@ -12,7 +12,7 @@ def importcsv(file):
 		data[i]=[float(x) for x in data[i]]
 	return data
 
-def distance(data,predict):
+def distance(data,predict): #Return a list of distances 
     distance=[]
     for line in data:
         somme=0
@@ -21,13 +21,15 @@ def distance(data,predict):
         distance.append((line[-1],math.sqrt(somme)))
     return distance
 
-def getclass(data):
-    group=[]
+def getclass(data): #Return a list with the class possible in the data
+    group=[data[0][-1]]
     for line in data:
-        group.append(line[-1])
-    return set(group)
+        if line[-1] not in group:
+            group.append(line[-1])
+    return group
 
-def knn(data,predict,k):
+
+def knn(data,predict,k): #Calculation of the k best and closest predictions
     dist=distance(data,predict)
     tri_dist=sorted(dist)    
     dist_best=tri_dist[:k]  #Take the k best ones

@@ -7,7 +7,7 @@ def importcsv(file):
 	data = list(lines)
 	return data
 
-def getclass(data):
+def getclass(data): #Return a list with the class possible in the data
     group=[data[0][-1]]
     for line in data:
         if line[-1] not in group:
@@ -26,7 +26,7 @@ def format(data):#Transform the data so the class or coded like a binary variabl
                 line[-1]=1
     return data
 
-def activation(data,weight):
+def activation(data,weight): #Activation function
     activ=weight[0]
     for i in range(len(data)-1):
         activ=activ+weight[i+1]*data[i]
@@ -35,7 +35,7 @@ def activation(data,weight):
     else:
         return 0
 
-def updateweight(data,l,nb):
+def updateweight(data,l,nb): #Update the weight with the number nb (number of times that we will go through the data)
     weight=[0]*len(data[0])
     n=0
     while n <=nb: #Choose how many times going through the data
@@ -47,7 +47,7 @@ def updateweight(data,l,nb):
         n+=1
     return weight
 
-def accuracy(test,predict):
+def accuracy(test,predict): #Test how well the classifier is predicting
     right=0
     for i in range(len(test)):
         if test[i][-1]==predict[i]:
@@ -55,7 +55,7 @@ def accuracy(test,predict):
     acc=right/float(len(test))*100
     return acc
     
-def perceptron(filetrain,filetest,l,nb):
+def perceptron(filetrain,filetest,l,nb): #Classifier
     train=format(importcsv(filetrain))
     test=format(importcsv(filetest))
     weight=updateweight(train,l,nb)
